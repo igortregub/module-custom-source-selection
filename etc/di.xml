@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="IgorTregub\CustomSourceSelection\Api\Data\SourceWeightAttributeInterface" type="IgorTregub\CustomSourceSelection\Model\SourceWeightAttribute"/>
+    <preference for="IgorTregub\CustomSourceSelection\Api\Data\GetStockSourceInterface" type="IgorTregub\CustomSourceSelection\Model\GetStockSource"/>
+    <preference for="IgorTregub\CustomSourceSelection\Api\GetSourceListOrderedInterface" type="IgorTregub\CustomSourceSelection\Model\GetSourceList"/>
+
+    <type name="Magento\InventorySourceSelectionApi\Model\SourceSelectionService">
+        <arguments>
+            <argument name="sourceSelectionMethods" xsi:type="array">
+                <item name="sourceWeight" xsi:type="string">IgorTregub\CustomSourceSelection\Model\Algorithms\SourceWeightBased</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\InventorySourceSelectionApi\Model\GetSourceSelectionAlgorithmList">
+        <arguments>
+            <argument name="availableAlgorithms" xsi:type="array">
+                <item name="minimalDeliveryCost" xsi:type="array">
+                    <item xsi:type="string" name="code">sourceWeight</item>
+                    <item xsi:type="string" name="title" translatable="true">Source Weight</item>
+                    <item xsi:type="string" name="description" translatable="true">Algorithm that selects source with highest weight.</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\InventoryApi\Api\SourceRepositoryInterface">
+        <plugin name="InventoryApi_Api_SourceRepository" type="IgorTregub\CustomSourceSelection\Plugin\InventoryApi\Api\SourceRepository"/>
+    </type>
+</config>
