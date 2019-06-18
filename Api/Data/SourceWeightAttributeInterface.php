@@ -6,8 +6,6 @@ namespace IgorTregub\CustomSourceSelection\Api\Data;
 
 /**
  * Interface AddressInterface
- *
- * @package Borgir\CustomSourceSelection\Api\Data
  */
 interface SourceWeightAttributeInterface
 {

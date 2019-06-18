@@ -8,6 +8,9 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\InventoryApi\Api\Data\SourceInterface;
 
+/**
+ * Interface GetSourceListOrderedInterface
+ */
 interface GetSourceListOrderedInterface
 {
     /**
